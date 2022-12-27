@@ -1,11 +1,80 @@
-console.log("Bienvenido a su tienda virtual")
+let opcion = prompt("Desea jugar al piedra, paperl o tijera? (S/N)").toUpperCase()
+let puntajeUsuario
+let puntajeMaquina
 
-let carrito = Number(prompt("Ingrese el numero del juguete que desea adquirir: \n 1-Avion \n 2-Camion \n 3-Autito 4-Tractor \n 5-Muñecos \ 0-Para salir e ir al carrito de compras"))
+while (opcion == "s") {
+    alert("!Genial¡ Vamos a jugar a piedra, papel o tijera. Quien primero gane 3 partidas gana el juego.")
+    puntajeUsuario = 0
+    puntajeMaquina = 0
 
-while (carrito != 0) {
-    let carrito = Number(prompt("Ingrese el numero del juguete que desea adquirir: \n 1-Avion \n 2-Camion \n 3-Autito 4-Tractor \n 5-Muñecos \n 0-Para salir e ir al carrito de compras"))
+    while (puntajeUsuario < 3 && puntajeMaquina < 3) {
+        let eleccionUsuario = prompt("¿Piedra, papel o tijera? (P/S/T)").toUpperCase()
+        let eleccionMaquinaRandom = Math.floor(Math.random() * 3)
+        let eleccionMaquina 
+        switch (eleccionMaquinaRandom) {
+            case 0:
+                eleccionMaquina = "P"
+                break
+            case 1:
+                eleccionMaquina = "T"
+                break    
+            case 2:
+                eleccionMaquina = "S"
+                break
+        }
 
+        let resultado = comprobarRonda(eleccionUsuario, eleccionMaquina)
+        alert("Elegiste " + eleccionUsuario + " y la maquina eligió " + eleccionMaquina + ": " + resultado)
+        puntaje(resultado)
+        alert("El puntaje es: " + puntajeUsuario + " - " + puntajeMaquina)
+    }
+    comprobarGanador()
+    opcion = prompt("¿desea volver a jugar? (S/N)").toUpperCase()
+
+    if (opcion == "N") {
+        alert("¡Gracias por jugar!")
+    }
 }
+while (opcion != "S" && opcion != "N") {
+    alert("Opción inválida. Por favor, ingrese S o N para jugar.")
+    opcion = prompt("Presione S para jugar o N en caso contrario").toUpperCase
+}
+
+
+function comprobarRonda(Usuario, Maquina) {
+    let resultado
+    if (Usuario == "P" && Maquina == "S") {
+        resultado = "Perdiste"
+    }
+    else if (Usuario == "P" && Maquina == "T") {
+        resultado = "Ganaste"
+    }
+    else if (Usuario == "S" && Maquina == "P") {
+        resultado = "Ganaste"
+    }
+    else if (Usuario == "S" && Maquina == "T") {
+        resultado = "Perdiste"
+    }
+    else if (Usuario == "T" && Maquina == "P") {
+        resultado = "Perdiste"
+    }
+    else if (Usuario == "T" && Maquina == "S") {
+        resultado = "Ganaste"
+    }
+    else {
+        resultado = "Empate"
+    }
+    return resultado
+}
+
+funcion puntaje(resultado) {
+    if (resultado == "Ganaste") {
+        puntajeUsuario *= 1
+    }
+}
+
+
+
 
 
 
