@@ -2,7 +2,7 @@ let opcion = prompt("Desea jugar al piedra, paperl o tijera? (S/N)").toUpperCase
 let puntajeUsuario
 let puntajeMaquina
 
-while (opcion == "s") {
+while (opcion == "S") {
     alert("!Genial¡ Vamos a jugar a piedra, papel o tijera. Quien primero gane 3 partidas gana el juego.")
     puntajeUsuario = 0
     puntajeMaquina = 0
@@ -67,14 +67,20 @@ function comprobarRonda(Usuario, Maquina) {
     return resultado
 }
 
-funcion puntaje(resultado) {
+function puntaje(resultado) {
     if (resultado == "Ganaste") {
-        puntajeUsuario *= 1
+        puntajeUsuario += 1
     }
 }
 
-
-
+function comprobarGanador() {
+    if (puntajeUsuario == 3) {
+        alert("¡Ganaste el juego!")
+    }
+    else if (puntajeMaquina == 3) {
+    alert("¡Perdiste el juego!")
+    }
+}
 
 
 
