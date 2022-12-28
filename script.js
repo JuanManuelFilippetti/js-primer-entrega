@@ -1,34 +1,34 @@
-let opcion = prompt("Desea jugar al piedra, paperl o tijera? (S/N)").toUpperCase()
-let puntajeUsuario
-let puntajeMaquina
+let opcion = prompt("Queres jugar a piedra, papel o tijera? (S/N)").toUpperCase()
+let punUsuario
+let punMaquina
 
 
 
     while (opcion == "S") {
-        alert("!Genial¡ Vamos a jugar a piedra, papel o tijera. Quien primero gane 3 partidas gana el juego.")
-        puntajeUsuario = 0
-        puntajeMaquina = 0
+        alert("OK, a jugar. Quien primero gane 3 partidas gana el juego.")
+        punUsuario = 0
+        punMaquina = 0
 
-        while (puntajeUsuario < 3 && puntajeMaquina < 3) {
-            let eleccionUsuario = prompt("¿Piedra, papel o tijera? (P/S/T)").toUpperCase()
-            let eleccionMaquinaRandom = Math.floor(Math.random() * 3)
-            let eleccionMaquina 
-            switch (eleccionMaquinaRandom) {
+        while (punUsuario < 3 && punMaquina < 3) {
+            let eUsuario = prompt("¿Piedra, papel o tijera? (P/A/T)").toUpperCase()
+            let eMaquinaRandom = Math.floor(Math.random() * 3)
+            let eMaquina 
+            switch (eMaquinaRandom) {
                 case 0:
-                    eleccionMaquina = "P"
+                    eMaquina = "P"
                     break
                 case 1:
-                    eleccionMaquina = "T"
+                    eMaquina = "T"
                     break    
                 case 2:
-                    eleccionMaquina = "S"
+                    eMaquina = "A"
                     break
             }
 
-            let resultado = comprobarRonda(eleccionUsuario, eleccionMaquina)
-            alert("Elegiste " + eleccionUsuario + " y la maquina eligió " + eleccionMaquina + ": " + resultado)
+            let resultado = comprobarRonda(eUsuario, eMaquina)
+            alert("Elegiste " + eUsuario + " y la maquina eligió " + eMaquina + ": " + resultado)
             puntaje(resultado)
-            alert("El puntaje es: " + puntajeUsuario + " - " + puntajeMaquina)
+            alert("El puntaje es: " + punUsuario + " - " + punMaquina)
         }
         comprobarGanador()
         opcion = prompt("¿Desea volver a jugar? (S/N)").toUpperCase()
@@ -48,22 +48,22 @@ let puntajeMaquina
 
 function comprobarRonda(Usuario, Maquina) {
     let resultado
-    if (Usuario == "P" && Maquina == "S") {
+    if (Usuario == "P" && Maquina == "A") {
         resultado = "Perdiste"
     }
     else if (Usuario == "P" && Maquina == "T") {
         resultado = "Ganaste"
     }
-    else if (Usuario == "S" && Maquina == "P") {
+    else if (Usuario == "A" && Maquina == "P") {
         resultado = "Ganaste"
     }
-    else if (Usuario == "S" && Maquina == "T") {
+    else if (Usuario == "A" && Maquina == "T") {
         resultado = "Perdiste"
     }
     else if (Usuario == "T" && Maquina == "P") {
         resultado = "Perdiste"
     }
-    else if (Usuario == "T" && Maquina == "S") {
+    else if (Usuario == "T" && Maquina == "A") {
         resultado = "Ganaste"
     }
     else {
@@ -74,18 +74,18 @@ function comprobarRonda(Usuario, Maquina) {
 
 function puntaje(resultado) {
     if (resultado == "Ganaste") {
-        puntajeUsuario += 1
+        punUsuario += 1
     }
     else if (resultado == "Perdiste") {
-        puntajeMaquina += 1
+        punMaquina += 1
     }
 }
 
 function comprobarGanador() {
-    if (puntajeUsuario == 3) {
+    if (punUsuario == 3) {
         alert("¡Ganaste el juego!")
     }
-    else if (puntajeMaquina == 3) {
+    else if (punMaquina == 3) {
     alert("¡Perdiste el juego!")
     }
 }
